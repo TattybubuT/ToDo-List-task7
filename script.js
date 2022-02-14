@@ -1,25 +1,28 @@
 const form = document.querySelector('#add-todo-form');
-const input = document.querySelector('#input-todo');
-const todoList = document.querySelector('#todo-output');
-const btnSubmit = document.querySelector('button');
+const todoInput = document.querySelector("#input-todo");
+const todoOutput = document.querySelector("#output-todo");
+const addBtn = document.querySelector("button");
+const todoList = document.querySelector(".todo-list");
 
-form.addEventListener('submit', function (e) {
+
+form.addEventListener('submit', (e) => {
     e.preventDefault();
+
 });
 
-btnSubmit.addEventListener('click', function (e) {
-    if (input.value === '') {
-        alert('Error: Please enter a list item');
+addBtn.addEventListener('click', (e) => {
+    if (todoInput.value === "") {
+        alert("Error: You must enter a todo!");
     } else {
-        let todo = document.createElement('div');
-        todo.classList.add('todo-item');
-        todoList.appendChild(todo);
-        todo.innerHTML = input.value;
+        let ul = document.createElement('ul');
+        let li = document.createElement('li');
+        todoList.appendChild(ul);
+        ul.appendChild(li);
+        li.innerHTML = todoInput.value;
 
-        const taskAdd = input.value = '';
-
-        todo.addEventListener('click', () => {
-            todo.remove()
+        todoInput.value = "";
+        li.addEventListener('click', () => {
+            li.remove();
         });
     }
 });
